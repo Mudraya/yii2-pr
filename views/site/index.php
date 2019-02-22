@@ -1,4 +1,9 @@
 <?php ?>
+
+<ul class="catalog">
+<?= \app\components\MenuWidget::Widget(['tpl' => 'menu']) ?>
+</ul>
+
 <section id="slider"><!--slider-->
     <div class="container">
         <div class="row">
@@ -71,7 +76,7 @@
                 <div class="left-sidebar">
                     <h2>Category</h2>
 
-                    <?= \app\components\MenuWidget::Widget(['tpl' => 'menu']) ?>
+<!--                            --><?php //debug($data); ?>
 
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                         <div class="panel panel-default">
@@ -757,3 +762,7 @@
         </div>
     </div>
 </section>
+
+<script>
+    $( ".catalog" ).dcAccordion({speed: 300});
+</script>
