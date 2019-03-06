@@ -70,16 +70,16 @@ use yii\helpers\Html;
                                 <div class="productinfo text-center">
                                     <?= \yii\helpers\Html::img("@web/images/products/{$product->img}", ['alt' => $product->name]) ?>
                                     <h2>$<?= $product->price?></h2>
-                                    <p><?= $product->name?></p>
+                                    <p><a href="<?= \yii\helpers\Url::to(['product/view', 'id' => $product->id]) ?>"><?= $product->name?></a></p>
                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                </div>
+<!--                                <div class="product-overlay">-->
+<!--                                    <div class="overlay-content">-->
+<!--                                        <h2>$56</h2>-->
+<!--                                        <p>Easy Polo Black Edition</p>-->
+<!--                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
@@ -91,16 +91,23 @@ use yii\helpers\Html;
                     </div>
 
                     <?php endforeach; ?>
+
+                    <?php
+                        echo \yii\widgets\LinkPager::widget([
+                            'pagination' => $pages,
+                        ]);
+                        ?>
+
                     <?php endif; ?>
 
 
 
-                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>
+<!--                    <ul class="pagination">-->
+<!--                        <li class="active"><a href="">1</a></li>-->
+<!--                        <li><a href="">2</a></li>-->
+<!--                        <li><a href="">3</a></li>-->
+<!--                        <li><a href="">&raquo;</a></li>-->
+<!--                    </ul>-->
                 </div><!--features_items-->
             </div>
         </div>
