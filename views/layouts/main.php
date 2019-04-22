@@ -334,7 +334,7 @@ ltAppAsset::register($this);
     'id' => 'cart',
     'size' => 'modal-lg',
     'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Continue shopping</button>
-        <button type="button" class="btn btn-success">Make a purchase</button>
+        <a href="' . \yii\helpers\Url::to(['cart/view']) . '" class="btn btn-success">Make a purchase</a>
         <button type="button" class="btn btn-danger" onclick="clearCart()">Clear cart</button>'
 ]);
 
@@ -360,14 +360,14 @@ ltAppAsset::register($this);
 
     $('.add-to-cart').on('click', function (e) {
         e.preventDefault();
-        var id = $(this).data('id');
+        var id = $(this).data('id'),
+            qty = $('#qty').val();
         $.ajax({
             url: '/cart/add',
-            data: {id: id},
+            data: {id: id, qty: qty},
             type: 'GET',
             success: function(res){
                 if(!res) alert('Ошибка!');
-                // console.log(res);
                 showCart(res);
             },
             error: function(){
@@ -396,6 +396,20 @@ ltAppAsset::register($this);
     }
     $( ".catalog" ).dcAccordion({speed: 300});
 
+    function getCart(){
+        $.ajax({
+            url: '/cart/show',
+            type: 'GET',
+            success: function(res){
+                if(!res) alert('Ошибка!');
+                showCart(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+        return false;
+    }
 </script>
 
 <?php $this->endBody() ?>
