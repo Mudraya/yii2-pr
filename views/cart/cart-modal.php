@@ -35,28 +35,28 @@
 <?php else: ?>
     <h3>Cart is empty</h3>
 <?php endif;?>
-<!--<script>-->
-<!--    $('#cart .modal-body').on('click', '.del-item', function(){-->
-<!--        var id = $(this).data('id');-->
-<!--        $.ajax({-->
-<!--            url: '/cart/del-item',-->
-<!--            data: {id: id},-->
-<!--            type: 'GET',-->
-<!--            success: function(res){-->
-<!--                if(!res) alert('Ошибка!');-->
-<!--                showCart(res);-->
-<!--            },-->
-<!--            error: function(){-->
-<!--                alert('Error!');-->
-<!--            }-->
-<!--        });-->
-<!--    });-->
-<!---->
-<!---->
-<!--    function showCart(cart){-->
-<!--        $('#cart .modal-body').html(cart);-->
-<!--        $('#cart').modal();-->
-<!--    }-->
-<!--</script>-->
+<script>
+    $('#cart .modal-body').on('click', '.del-item', function(){
+        var id = $(this).data('id');
+        $.ajax({
+            url: '/cart/del-item',
+            data: {id: id},
+            type: 'GET',
+            success: function(res){
+                if(!res) alert('Ошибка!');
+                showCart(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+    });
+
+
+    function showCart(cart){
+        $('#cart .modal-body').html(cart);
+        $('#cart').modal();
+    }
+</script>
 <?php $this->registerJsFile('@web/js/main.js') ?>
 
