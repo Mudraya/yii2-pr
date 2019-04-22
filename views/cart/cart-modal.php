@@ -13,11 +13,12 @@
             <tbody>
             <?php foreach($session['cart'] as $id => $item):?>
                 <tr>
-                    <td><?= $item['img']?></td>
+                    <td><?= \yii\helpers\Html::img("@web/images/products/{$item['img']}", ['alt' => $item['name'], 'height' => 50]) ?></td>
+
                     <td><?= $item['name']?></td>
                     <td><?= $item['qty']?></td>
                     <td><?= $item['price']?></td>
-                    <td><span class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span></td>
+                    <td><span data-id="<?= $id?>" class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span></td>
                 </tr>
             <?php endforeach?>
             <tr>
@@ -34,42 +35,28 @@
 <?php else: ?>
     <h3>Cart is empty</h3>
 <?php endif;?>
+<!--<script>-->
+<!--    $('#cart .modal-body').on('click', '.del-item', function(){-->
+<!--        var id = $(this).data('id');-->
+<!--        $.ajax({-->
+<!--            url: '/cart/del-item',-->
+<!--            data: {id: id},-->
+<!--            type: 'GET',-->
+<!--            success: function(res){-->
+<!--                if(!res) alert('Ошибка!');-->
+<!--                showCart(res);-->
+<!--            },-->
+<!--            error: function(){-->
+<!--                alert('Error!');-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!---->
+<!---->
+<!--    function showCart(cart){-->
+<!--        $('#cart .modal-body').html(cart);-->
+<!--        $('#cart').modal();-->
+<!--    }-->
+<!--</script>-->
+<?php $this->registerJsFile('@web/js/main.js') ?>
 
-<script>
-    $('.add-to-cart').on('click', function (e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        $.ajax({
-            url: '/cart/add',
-            data: {id: id},
-            type: 'GET',
-            success: function(res){
-                if(!res) alert('Ошибка!');
-                // console.log(res);
-                showCart(res);
-            },
-            error: function(){
-                alert('Error!');
-            }
-        });
-    });
-
-    function showCart(cart){
-        $('#cart .modal-body').html(cart);
-        $('#cart').modal();
-    }
-
-    function clearCart(){
-        $.ajax({
-            url: '/cart/clear',
-            type: 'GET',
-            success: function(res){
-                if(!res) alert('Ошибка!');
-                showCart(res);
-            },
-            error: function(){
-                alert('Error!');
-            }
-        });
-    }
-</script>

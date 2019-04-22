@@ -552,6 +552,7 @@ use yii\helpers\Html;
         </div>
     </div>
 </section>
+<?php //$this->registerJsFile('js/main.js'); ?>
 
 <script>
     $( ".catalog" ).dcAccordion({speed: 300});
@@ -593,4 +594,34 @@ use yii\helpers\Html;
         });
     }
 
+    function getCart(){
+        $.ajax({
+            url: '/cart/show',
+            type: 'GET',
+            success: function(res){
+                if(!res) alert('Ошибка!');
+                showCart(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+        return false;
+    }
+
+    $('#cart .modal-body').on('click', '.del-item', function(){
+        var id = $(this).data('id');
+        $.ajax({
+            url: '/cart/del-item',
+            data: {id: id},
+            type: 'GET',
+            success: function(res){
+                if(!res) alert('Ошибка!');
+                showCart(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+    });
 </script>
