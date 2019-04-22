@@ -327,6 +327,57 @@ ltAppAsset::register($this);
 
 </footer><!--/Footer-->
 
+<?php
+\yii\bootstrap\Modal::begin([
+    'header' => '<h2>Cart</h2>',
+    'id' => 'cart',
+    'size' => 'modal-lg',
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Continue shopping</button>
+        <button type="button" class="btn btn-success">Make a purchase</button>
+        <button type="button" class="btn btn-danger" onclick="clearCart()">Clear cart</button>'
+]);
+
+\yii\bootstrap\Modal::end();
+?>
+
+<script>
+    $('.add-to-cart').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        $.ajax({
+            url: '/cart/add',
+            data: {id: id},
+            type: 'GET',
+            success: function(res){
+                if(!res) alert('Ошибка!');
+                console.log(res);
+                //showCart(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+    });
+
+    function showCart(cart){
+        $('#cart .modal-body').html(cart);
+        $('#cart').modal();
+    }
+
+    function clearCart(){
+        $.ajax({
+            url: '/cart/clear',
+            type: 'GET',
+            success: function(res){
+                if(!res) alert('Ошибка!');
+                showCart(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+    }
+</script>
 
 <?php $this->endBody() ?>
 </body>

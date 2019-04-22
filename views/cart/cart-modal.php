@@ -45,12 +45,31 @@
             type: 'GET',
             success: function(res){
                 if(!res) alert('Ошибка!');
-                console.log(res);
-                //showCart(res);
+                // console.log(res);
+                showCart(res);
             },
             error: function(){
                 alert('Error!');
             }
         });
     });
+
+    function showCart(cart){
+        $('#cart .modal-body').html(cart);
+        $('#cart').modal();
+    }
+
+    function clearCart(){
+        $.ajax({
+            url: '/cart/clear',
+            type: 'GET',
+            success: function(res){
+                if(!res) alert('Ошибка!');
+                showCart(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+    }
 </script>
