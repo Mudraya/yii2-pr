@@ -35,7 +35,7 @@ class AppAsset extends AssetBundle
         'js/jquery.scrollUp.min.js',
         'js/price-range.js',
         'js/jquery.prettyPhoto.js',
-        'js/juery.cookie.js',
+        'js/jquery.cookie.js',
         'js/jquery.accordion.js',
         'js/main.js',
     ];
