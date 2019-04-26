@@ -24,18 +24,18 @@ ltAppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>Admin module</title>
     <?php $this->head() ?>
 
-<!-- second way to add scripts if lt IE 9 -->
-<!--    --><?php
-//        $this->registerJsFile('js/html5shiv.js', ['position' => \yii\web\View::POS_HEAD,
-//            'condition' => 'lte IE9']);
-//    $this->registerJsFile('js/respond.min.js', ['position' => \yii\web\View::POS_HEAD,
-//        'condition' => 'lte IE9']);
-//    ?>
+    <!-- second way to add scripts if lt IE 9 -->
+    <!--    --><?php
+    //        $this->registerJsFile('js/html5shiv.js', ['position' => \yii\web\View::POS_HEAD,
+    //            'condition' => 'lte IE9']);
+    //    $this->registerJsFile('js/respond.min.js', ['position' => \yii\web\View::POS_HEAD,
+    //        'condition' => 'lte IE9']);
+    //    ?>
 
-<!--    -->
+    <!--    -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
@@ -113,7 +113,7 @@ ltAppAsset::register($this);
                             <li><a href="checkout.php"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 
-                            <li><a href="<?= \yii\helpers\Url::to(['/admin']) ?>"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -135,7 +135,7 @@ ltAppAsset::register($this);
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="index.php" class="active">Home</a></li>
+                            <li><a href="../../../../web/index.php" class="active">Home</a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="shop.php">Products</a></li>
@@ -159,7 +159,7 @@ ltAppAsset::register($this);
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
                         <form method="get" action="<?= \yii\helpers\Url::to(['category/search'])?>">
-                        <input type="text" placeholder="Search" name="q"/>
+                            <input type="text" placeholder="Search" name="q"/>
                         </form>
                     </div>
                 </div>
