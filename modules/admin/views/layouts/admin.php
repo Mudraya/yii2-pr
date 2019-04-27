@@ -136,24 +136,18 @@ ltAppAsset::register($this);
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="../../../../web/index.php" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                            <li><a href="<?=\yii\helpers\Url::to(['/admin']) ?>" class="active">Home</a></li>
+                            <li class="dropdown"><a href="#">Категории<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="shop.php">Products</a></li>
-                                    <li><a href="product-details.php">Product Details</a></li>
-                                    <li><a href="checkout.php">Checkout</a></li>
-                                    <li><a href="cart.php">Cart</a></li>
-                                    <li><a href="login.php">Login</a></li>
+                                    <li><a href="<?=\yii\helpers\Url::to(['category/index']) ?>">Список категорий</a></li>
+                                    <li><a href="<?=\yii\helpers\Url::to(['category/create']) ?>">Добавить категорию</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#">Товары<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="blog.php">Blog List</a></li>
-                                    <li><a href="blog-single.php">Blog Single</a></li>
+                                    <li><a href="<?=\yii\helpers\Url::to(['product/index']) ?>">Список товаров</a></li>
                                 </ul>
                             </li>
-                            <li><a href="404.php">404</a></li>
-                            <li><a href="contact-us.php">Contact</a></li>
                         </ul>
                     </div>
                 </div>

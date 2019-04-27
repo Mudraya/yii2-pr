@@ -138,23 +138,17 @@ ltAppAsset::register($this);
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="index.php" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#">Category<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="shop.php">Products</a></li>
-                                    <li><a href="product-details.php">Product Details</a></li>
-                                    <li><a href="checkout.php">Checkout</a></li>
-                                    <li><a href="cart.php">Cart</a></li>
-                                    <li><a href="login.php">Login</a></li>
+                                    <li><a href="shop.php">Category list</a></li>
+                                    <li><a href="product-details.php">Add Category</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#">Product<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="blog.php">Blog List</a></li>
-                                    <li><a href="blog-single.php">Blog Single</a></li>
+                                    <li><a href="blog.php">Product list</a></li>
                                 </ul>
                             </li>
-                            <li><a href="404.php">404</a></li>
-                            <li><a href="contact-us.php">Contact</a></li>
                         </ul>
                     </div>
                 </div>
