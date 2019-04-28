@@ -17,6 +17,7 @@ class MenuWidget extends Widget
 {
 
     public  $tpl; // ul or select
+    public  $model;
     public  $data; // arr categories
     public  $tree; // tree categories
     public  $menuHtml; // html code
@@ -28,20 +29,23 @@ class MenuWidget extends Widget
         }
         $this->tpl .= '.php';
     }
-
-    public function run()
-    {
+    public function run(){
         // get cache
-        $menu = Yii::$app->cache->get('menu');
-        if ($menu) return $menu;
+        if($this->tpl == 'menu.php'){
+            $menu = Yii::$app->cache->get('menu');
+            if($menu) return $menu;
+        }
+
         $this->data = Category::find()->indexBy('id')->asArray()->all();
         $this->tree = $this->getTree();
         $this->menuHtml = $this->getMenuHtml($this->tree);
-        //debug($this->tree);
-        //set cache
-        Yii::$app->cache->set('menu', $this->menuHtml, 60);
+        // set cache
+        if($this->tpl == 'menu.php'){
+            Yii::$app->cache->set('menu', $this->menuHtml, 60);
+        }
         return $this->menuHtml;
     }
+
 
     protected function getTree() {
         $tree = [];
@@ -54,17 +58,18 @@ class MenuWidget extends Widget
         return $tree;
     }
 
-    protected function  getMenuHtml ($tree) {
+    protected function getMenuHtml($tree, $tab = ''){
         $str = '';
         foreach ($tree as $category) {
-            $str .= $this->catToTemplate($category);
+            $str .= $this->catToTemplate($category, $tab);
         }
         return $str;
     }
 
+
     // помещаем каждый отдельный элементв шаблон
     // используя буферизацию
-    protected function catToTemplate($category) {
+    protected function catToTemplate($category, $tab) {
         ob_start();
         include __DIR__ . '/menu_tpl/' . $this->tpl;
         return ob_get_clean();
