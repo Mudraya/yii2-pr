@@ -21,6 +21,18 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    public $image;
+    public $gallery;
+
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -44,6 +56,7 @@ class Product extends \yii\db\ActiveRecord
             [['content', 'hit', 'new', 'sale'], 'string'],
             [['price'], 'number'],
             [['name', 'keywords', 'description', 'img'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -60,10 +73,20 @@ class Product extends \yii\db\ActiveRecord
             'price' => 'Price',
             'keywords' => 'Keywords',
             'description' => 'Description',
-            'img' => 'Img',
+            'image' => 'Img',
             'hit' => 'Hit',
             'new' => 'New',
             'sale' => 'Sale',
         ];
+    }
+
+    public function upload(){
+        if($this->validate()){
+            $path = 'upload/store/' . $this->image->baseName . '.' . $this->image->extension;
+            $this->image->saveAs($path);
+            return true;
+        }else{
+            return false;
+        }
     }
 }
